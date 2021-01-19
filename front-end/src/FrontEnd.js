@@ -63,16 +63,6 @@ export class FrontEnd extends LitElement {
       <main>
         <div class="logo">${openWcLogo}</div>
         <h1>${this.title}</h1>
-
-        <p>Edit <code>src/FrontEnd.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/developing/#code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
       </main>
 
       <p class="app-footer">
