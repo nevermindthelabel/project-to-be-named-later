@@ -12,68 +12,41 @@ export class FrontEnd extends LitElement {
     return css`
       :host {
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        font-size: calc(10px + 2vmin);
-        color: #1a2b42;
-        max-width: 960px;
-        margin: 0 auto;
-        text-align: center;
-        background-color: var(--front-end-background-color);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
       }
-
+      header {
+        background: green;
+      }
       main {
-        flex-grow: 1;
+        background: orange;
       }
-
-      .logo > svg {
-        margin-top: 36px;
-        animation: app-logo-spin infinite 20s linear;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .app-footer {
-        font-size: calc(12px + 0.5vmin);
-        align-items: center;
-      }
-
-      .app-footer a {
-        margin-left: 5px;
+      footer {
+        background: pink;
       }
     `;
   }
 
   constructor() {
     super();
-    this.title = 'My app';
+    this.title =  '';
   }
 
   render() {
     return html`
+    <header>this is the header</header>
       <main>
-        <div class="logo">${openWcLogo}</div>
-        <h1>${this.title}</h1>
+        <h1>welcome to the main event</h1>
+        <button @click="${this.buttonClickTest}">get a thing</button>
+        ${this.title}
       </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+    <div class="app-footer"><p>footer test text</p></div>
     `;
+  }
+
+  async buttonClickTest() {
+    const request = await fetch('api/test');
+    const result = await request.json();
+    this.title = result.title
   }
 }
